@@ -17,7 +17,7 @@ namespace Minesweeper_Console.NET
 
         private Vector2 cursorPosition;
 
-       // private bool[] cheats = new bool;
+        // private bool[] cheats = new bool;
 
         public SingleGame()
         {
@@ -36,7 +36,15 @@ namespace Minesweeper_Console.NET
                 if (InputManager() == 1)
                 {
                     isPlaying = false;
-                    Console.WriteLine("\nYou blew up! Be careful next time!\n");
+
+                    Console.WriteLine("\nВЫ ЕЛЕНА ОБОВЯН!!!!\n");
+                    Console.WriteLine("ВЫ ЕЛЕНА ОБОВЯН!!!!\n");
+                    Console.WriteLine("ВЫ ЕЛЕНА ОБОВЯН!!!!\n");
+                    Console.WriteLine("ВЫ ЕЛЕНА ОБОВЯН!!!!\n");
+                    Console.WriteLine("ВЫ ЕЛЕНА ОБОВЯН!!!!\n");
+                    Console.WriteLine("ВЫ ЕЛЕНА ОБОВЯН!!!!\n");
+                    Console.WriteLine("ВЫ ЕЛЕНА ОБОВЯН!!!!\n");
+                    Console.WriteLine("ВЫ ЕЛЕНА ОБОВЯН!!!!\n");
                     Console.ReadKey();
                 }
 
@@ -83,7 +91,8 @@ namespace Minesweeper_Console.NET
 
         private void PrintMap()
         {
-            for (int i = 0; i < mapSize.X; i++) {
+            for (int i = 0; i < mapSize.X; i++)
+            {
                 for (int j = 0; j < mapSize.Y; j++)
                 {
                     Console.BackgroundColor = ConsoleColor.Black;
@@ -100,7 +109,7 @@ namespace Minesweeper_Console.NET
                             Console.Write("*");
                         else
                         {
-                            switch(CalculateAdjascentMines(new Vector2(i, j)))
+                            switch (CalculateAdjascentMines(new Vector2(i, j)))
                             {
                                 case 1:
                                     Console.BackgroundColor = ConsoleColor.Black;
@@ -163,7 +172,7 @@ namespace Minesweeper_Console.NET
                                     break;
                             }
                         }
-                            continue;
+                        continue;
                     }
                     if (map[i, j].isUndefined)
                     {
@@ -209,7 +218,7 @@ namespace Minesweeper_Console.NET
                 if ((int)cursorPosition.X == posX)
                     continue;
 
-                int posY = Random.Shared.Next((int)mapSize.Y );
+                int posY = Random.Shared.Next((int)mapSize.Y);
                 if ((int)cursorPosition.Y == posY)
                     continue;
 
@@ -229,7 +238,7 @@ namespace Minesweeper_Console.NET
 
         private int InputManager(bool firstInput = false)
         {
-            switch(Console.ReadKey().Key)
+            switch (Console.ReadKey().Key)
             {
                 case ConsoleKey.Escape:
                     Environment.Exit(0);
@@ -346,7 +355,8 @@ namespace Minesweeper_Console.NET
             int x = 0;
             int y = 0;
             bool rightInputFlag = false;
-            do {
+            do
+            {
                 Console.Clear();
                 Console.Write("Input map size: ");
                 string tokens = Console.ReadLine();
@@ -355,7 +365,7 @@ namespace Minesweeper_Console.NET
                 {
                     int spaceCount = 0;
                     int index = 0;
-                    foreach(var s in tokens)
+                    foreach (var s in tokens)
                     {
                         if ((s == ' ' || s == '\n') && spaceCount < 1)
                             spaceCount++;
@@ -381,7 +391,7 @@ namespace Minesweeper_Console.NET
                     }
                     else rightInputFlag = true;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine("\nSomething went wrong!\n" + ex.Message);
                     Console.ReadKey();
@@ -405,7 +415,7 @@ namespace Minesweeper_Console.NET
                         Console.WriteLine("\nThink bigger!");
                         Console.ReadKey();
                     }
-                    else if (mines > (x*y) / 2)
+                    else if (mines > (x * y) / 2)
                     {
                         Console.WriteLine("Oh you think you will survive that? No way! Go easy on yourself!");
                         Console.ReadKey();
@@ -419,7 +429,7 @@ namespace Minesweeper_Console.NET
                     Environment.Exit(1);
                 }
 
-            } while(!rightInputFlag);
+            } while (!rightInputFlag);
 
             mapSize.X = x;
             mapSize.Y = y;
